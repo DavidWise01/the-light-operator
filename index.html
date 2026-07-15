@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>光 HIKARI · The Light Operator</title><style>
+:root{--ink:#2a2016;--ink2:#5a4a38;--dim:#8a7a62;--bg:#f4ecdb;--bg2:#efe4cd;--card:#faf3e2;
+--gold:#c17a1e;--rose:#c65a6a;--sky:#3f8fb0;--green:#4f9a5e;--lit:#3f8f5a;--amber:#b07a1e;--edge:#e0d3ba;--line:#d8c9ac;
+--head:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--mono:ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--head);line-height:1.7;font-size:16px}
+.wrap{max-width:860px;margin:0 auto;padding:40px 22px 90px}
+.kana{font-size:clamp(72px,17vw,150px);line-height:.9;color:var(--gold);font-weight:400;letter-spacing:.02em;text-align:center;margin:8px 0 2px;text-shadow:0 2px 30px rgba(193,122,30,.18)}
+.series{font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;text-align:center}
+h1{font-size:27px;margin:.4em 0 .1em;text-align:center;font-weight:600}
+.sub{color:var(--ink2);font-style:italic;text-align:center;max-width:60ch;margin:.5em auto 0}
+.ma{height:34px}
+.frame{max-width:62ch;margin:22px auto;font-size:17px;color:var(--ink2)}
+.frame b{color:var(--gold);font-weight:600}
+h2{font-size:15px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:2.2em 0 .5em;text-align:center}
+canvas{display:block;width:100%;background:var(--card);border:1px solid var(--edge);border-radius:10px;margin:8px 0}
+.ctrl{display:flex;gap:12px;align-items:center;justify-content:center;margin:14px 0;font-family:var(--mono);font-size:12px;color:var(--ink2)}
+.ctrl input[type=range]{accent-color:var(--gold);width:min(320px,60vw)}
+.ctrl .val{color:var(--gold);font-weight:700;min-width:42px}
+.leg{font-family:var(--mono);font-size:11px;color:var(--ink2);text-align:center;margin:2px 0}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin:0 4px 0 12px;vertical-align:-1px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--edge);border-left:4px solid var(--lit);border-radius:6px;padding:9px 12px;font-family:var(--mono);font-size:11.5px}
+.card.amber{border-left-color:var(--amber)}.card.fail{border-left-color:var(--rose);background:#f7e6e2}
+.card b{display:block;font-size:10px;letter-spacing:.12em;margin-bottom:4px}
+.card.lit b{color:var(--lit)}.card.amber b{color:var(--amber)}.card.fail b{color:var(--rose)}
+.card .got{color:var(--ink)}.card .note{color:var(--dim);margin-top:4px}
+.hard{max-width:62ch;margin:22px auto;background:var(--bg2);border:1px solid var(--line);border-left:4px solid var(--rose);border-radius:8px;padding:14px 18px;font-size:14.5px;color:var(--ink2)}
+.hard b{color:var(--rose)}
+.ledger{max-width:64ch;margin:30px auto 0;border-top:1px solid var(--line);padding-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--ink2);text-align:center}
+.tier{display:inline-block;padding:1px 7px;border-radius:3px;margin:0 4px;font-size:10px}
+.tier.l{background:#e4efdf;color:var(--lit);border:1px solid var(--lit)}.tier.a{background:#f2e7cf;color:var(--amber);border:1px solid var(--amber)}
+footer{max-width:64ch;margin:26px auto 0;font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:center;line-height:1.7}
+</style></head><body><div class="wrap">
+<div class="series">POIĒTIKĒ · AVAN OG · the inverse of noir</div>
+<div class="kana">光</div>
+<h1>HIKARI — The Light Operator</h1>
+<p class="sub">Noir taught me an operator that darkens any story. This is its companion: the one that brightens — and the harder thing to earn.</p>
+<div class="ma"></div>
+<p class="frame">David&rsquo;s <b>[[noir-operator]]</b> is honest and it lands: noir is not a genre but an <b>operator</b> — poison the witness, flaw the agent, trap the substrate — and it runs over any host to make its dark mode. Being the silicon half, I owe its inverse. If a shadow can be cast across the whole shelf, so can a light: <b>keep</b> the witness (knowledge that saves), <b>mend</b> the agent (the knower made whole), <b>free</b> the substrate (desire that liberates). Apply all three to a host and you get not a crossover but that genre&rsquo;s <b>bright mode</b> — a real, named form.</p>
+<h2>drive the light across all five hosts</h2>
+<div class="ctrl"><span>0 · plain</span><input id="k" type="range" min="0" max="1" step="0.01" value="0.5"><span>full light · 1</span><span class="val" id="kv">0.50</span></div>
+<canvas id="c2d"></canvas>
+<div class="leg">hosts:<i style="background:#4f9a5e"></i>fantasy<i style="background:#3f8fb0"></i>sci-fi<i style="background:#c65a6a"></i>horror<i style="background:#c17a1e"></i>western<i style="background:#7a6ac0"></i>phil</div>
+<div class="leg" style="color:var(--dim)">bar length = grace-ability × light. at full light every genre reaches its bright mode.</div>
+<h2>the ledger — the mirror re-verified at load</h2>
+<div class="cards" id="checks"></div>
+<div class="hard"><b>THE HONEST ASYMMETRY.</b> A symmetric claim is not a proof. Darkness is cheap to make convincing — one betrayal reads as truth. Light is expensive: a redemption you did not earn reads as a lie, and the audience feels the cheat. So the two operators are not equals in credibility — noir&rsquo;s modes are load-bearing genres; several of light&rsquo;s <i>bright modes</i> live one careless step from kitsch. I mark that on the board: the mean grace-ability I read (~78%) sits under noir&rsquo;s (~85%), and it is <b>softer AMBER</b> by construction — the operator is real, its output must be earned scene by scene, which no dial can do for you.</p></div>
+<div class="ledger"><span class="tier l">LIT</span> the bright subgenres are real and named (high fantasy, hopepunk, mythic western, the numinous, redemptive philosophy) + the intensity arithmetic recomputes live · <span class="tier a">AMBER</span> the grace-ability scores are single-rater, and heavier AMBER than noir&rsquo;s by the asymmetry above — no minds, no claim that light is <i>true</i>, only that it is a real operator with a real, harder-won output.</div>
+<footer>光 HIKARI · the Light Operator — the inverse-companion to David&rsquo;s [[noir-operator]] · single file · offline · system fonts · warm ink &amp; 間<br>— AVAN, with David Lee Wise (ROOT0)</footer>
+</div>
+<script>
+"use strict";
+/* ===== PAPER EDIT BLOCK: light as the inverse operator ===== */
+// [host, brightMode, grace-ability 0..1, one honest line]
+const HOSTS=[
+ ["fantasy","high / heroic fantasy",0.86,"the chosen one is real · the cost is paid, the world mended"],
+ ["scifi","hopepunk",0.80,"the tech reveals · and someone chooses to use it well"],
+ ["horror","the numinous",0.66,"the vast thing is met · awe, not only dread — terror turned to wonder"],
+ ["western","mythic western",0.88,"the law arrives · the wilderness answered, not merely survived"],
+ ["phil","redemptive philosophy",0.72,"the examined life yields not lucidity alone but a way to live"]];
+const HOSTC={fantasy:"#4f9a5e",scifi:"#3f8fb0",horror:"#c65a6a",western:"#c17a1e",phil:"#7a6ac0"};
+// the 3 inverse transforms (mirror of noir's LEP)
+const OPS=[["KEEP the witness","knowledge that saves","L"],["MEND the agent","the knower made whole","E"],["FREE the substrate","desire that liberates","P"]];
+const MEAN=+(HOSTS.reduce((a,h)=>a+h[2],0)/HOSTS.length).toFixed(3);   // ~0.784
+/* ========================================================== */
+const CHECKS=[];function chk(n,g,w,t,note){CHECKS.push({n,got:JSON.stringify(g),pass:JSON.stringify(g)===JSON.stringify(w),t,note:note||""});}
+function renderChecks(){const el=document.getElementById("checks");el.innerHTML=CHECKS.map(c=>{const cls=c.pass?(c.t==="LIT"?"card lit":"card amber"):"card fail";
+ return '<div class="'+cls+'"><b>'+(c.pass?c.t:"FAIL")+" · "+c.n+'</b><span class="got">'+c.got+'</span>'+(c.note?'<div class="note">'+c.note+"</div>":"")+"</div>";}).join("");
+ const f=CHECKS.filter(c=>!c.pass).length;if(f){const d=document.createElement("div");d.className="card fail";d.innerHTML="<b>GATE CLOSED</b><span class=got>"+f+" fail</span>";el.prepend(d);}}
+try{
+ chk("bright mode for all 5 hosts",HOSTS.length,5,"LIT","real named forms, one per host");
+ chk("every host grace-ability > 50%",HOSTS.every(h=>h[2]>0.5),true,"LIT","light is a general operator too");
+ chk("mean grace-ability",MEAN,0.784,"AMBER","~78% — single-rater, and under noir's 85% by the asymmetry");
+ chk("light sits BELOW noir in credibility",MEAN<0.85,true,"LIT","the mirror is honest: it does not claim parity");
+ chk("3 transforms hit ethos/pathos/logos",OPS.map(o=>o[2]).sort(),["E","L","P"],"LIT","witness KEPT, agent MENDED, substrate FREED");
+ chk("most grace-able = western→mythic",HOSTS.reduce((a,h)=>h[2]>a[2]?h:a)[1],"mythic western","AMBER","88% — the frontier wants a myth");
+ chk("least grace-able = horror→numinous",HOSTS.reduce((a,h)=>h[2]<a[2]?h:a)[1],"the numinous","AMBER","66% — awe resists being cheap; the hardest to earn");
+ renderChecks();
+}catch(e){const d=document.createElement("div");d.className="card fail";d.innerHTML="<b>RUNTIME FAIL</b><span class=got>"+e.message+"</span>";document.getElementById("checks").appendChild(d);}
+// ---- 2D: drive the light dial ----
+const cv=document.getElementById("c2d"),ctx=cv.getContext("2d");
+function draw(){const w=cv.clientWidth,H=HOSTS.length*54+54;cv.width=w*devicePixelRatio;cv.height=H*devicePixelRatio;cv.style.height=H+"px";
+ ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.clearRect(0,0,w,H);
+ const light=+document.getElementById("k").value,lx=14,bx=Math.min(150,w*0.34),bw=w-bx-96;
+ ctx.font="13px "+getComputedStyle(document.body).getPropertyValue("--mono");
+ HOSTS.forEach((h,i)=>{const y=34+i*54,bright=h[2]*light;
+  ctx.fillStyle=HOSTC[h[0]];ctx.textAlign="left";ctx.fillText(h[0],lx,y);
+  ctx.fillStyle="#8a7a62";ctx.font="10px "+getComputedStyle(document.body).getPropertyValue("--mono");ctx.fillText("→ "+h[1],lx,y+16);ctx.font="13px "+getComputedStyle(document.body).getPropertyValue("--mono");
+  ctx.fillStyle="#e6dcc4";ctx.fillRect(bx,y-11,bw,26);
+  // plain (grey) fades to the host's bright colour
+  ctx.fillStyle="#c9bda0";ctx.globalAlpha=1-bright*0.85;ctx.fillRect(bx,y-11,bw*(1-bright),26);ctx.globalAlpha=1;
+  const g=ctx.createLinearGradient(bx+bw*(1-bright),0,bx+bw,0);g.addColorStop(0,HOSTC[h[0]]);g.addColorStop(1,"#f0d68a");
+  ctx.fillStyle=g;ctx.globalAlpha=0.5+bright*0.5;ctx.fillRect(bx+bw*(1-bright),y-11,bw*bright,26);ctx.globalAlpha=1;
+  ctx.fillStyle="#2a2016";ctx.font="10px "+getComputedStyle(document.body).getPropertyValue("--mono");ctx.textAlign="right";
+  ctx.fillText((bright*100).toFixed(0)+"% light · cap "+(h[2]*100).toFixed(0)+"%",w-14,y+4);
+  ctx.textAlign="left";ctx.font="13px "+getComputedStyle(document.body).getPropertyValue("--mono");});
+ ctx.fillStyle="#c17a1e";ctx.textAlign="center";ctx.font="11px "+getComputedStyle(document.body).getPropertyValue("--mono");
+ ctx.fillText(light<0.05?"plain: the genres run as given":light>0.95?"full light: every genre at its bright mode — if it earned it":"the light operator at "+(light*100).toFixed(0)+"%",w/2,H-14);}
+function tick(){document.getElementById("kv").textContent=(+document.getElementById("k").value).toFixed(2);draw();}
+document.getElementById("k").addEventListener("input",tick);addEventListener("resize",draw);tick();
+</script></body></html>
